@@ -30,7 +30,8 @@ cloudinary.config({
 });
 
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url));
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
