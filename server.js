@@ -37,7 +37,7 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 
-app.use(express.static(path.resolve(__dirname, './client/dist')));
+app.use(express.static(path.resolve(__dirname, 'client' ,'dist')));
 app.use(cookieParser());
 app.use(express.json())
 
