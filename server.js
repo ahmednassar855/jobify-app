@@ -2,7 +2,7 @@ import 'express-async-errors'
 import * as dotenv from 'dotenv';
 dotenv.config();
 import express from 'express';
-const app = express()
+const app = express();
 import morgan from 'morgan';
 import mongoose from 'mongoose';
 import cookieParser from 'cookie-parser';
@@ -15,7 +15,7 @@ import authRouter from './routes/authRouter.js';
 import userRouter from './routes/userRouter.js';
 
 // public
-import { dirname } from 'path'
+import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 import path from 'path';
 
@@ -30,7 +30,7 @@ cloudinary.config({
 });
 
 
-const __dirname = dirname(fileURLToPath(import.meta.url))
+const __dirname = dirname(fileURLToPath(import.meta.url));
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
@@ -38,9 +38,12 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use(express.static(path.resolve(__dirname, './client/dist')));
 app.use(cookieParser());
-app.use(express.json())
+app.use(express.json());
 
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
 
 app.get('/api/v1/test', (req, res) => {
   res.json({ msg: 'test route' });
@@ -57,8 +60,8 @@ app.get('*', (req, res) => {
 });
 
 app.use('*', (req, res) => {
-  res.status(404).json({msg : 'Not Found Page'})
-})
+  res.status(404).json({ msg: 'not found' });
+});
 
 
 // middleware
